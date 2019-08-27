@@ -72,6 +72,7 @@ const login = (auth, dispatch, { redirectTo }) =>
 const LoginForm: SFC<Props & EnhancedProps> = ({
     classes,
     isLoading,
+                                                   // @ts-ignore
     handleSubmit,
     translate,
 }) => (

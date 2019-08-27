@@ -99,6 +99,12 @@ const styles = theme =>
  * </ReferenceManyField>
  */
 class Datagrid extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = ({cloned_children: []});
+    }
+
     updateSort = event => {
         event.stopPropagation();
         this.props.setSort(event.currentTarget.dataset.sort);
@@ -144,9 +150,18 @@ class Datagrid extends Component {
             setSort,
             total,
             version,
+            root_record,
             ...rest
         } = this.props;
 
+
+        let {
+            cloned_children
+        } = this.state;
+
+        cloned_children = [];
+
+        console.log(this.props);
         /**
          * if loadedOnce is false, the list displays for the first time, and the dataProvider hasn't answered yet
          * if loadedOnce is true, the data for the list has at least been returned once by the dataProvider
@@ -172,6 +187,15 @@ class Datagrid extends Component {
         if (!isLoading && (ids.length === 0 || total === 0)) {
             return null;
         }
+
+        if(root_record !== undefined) {
+            Children.forEach(children, (child, index) => {
+                cloned_children.push(cloneElement(Children.only(child), {root_record}));
+            });
+            console.log(cloned_children);
+        }
+       // console.log(cloned_children);
+
 
         /**
          * After the initial load, if the data for the list isn't empty,
@@ -244,7 +268,7 @@ class Datagrid extends Component {
                         selectedIds,
                         version,
                     },
-                    children
+                    (root_record === undefined)?children:cloned_children
                 )}
             </Table>
         );
@@ -276,6 +300,7 @@ Datagrid.propTypes = {
     setSort: PropTypes.func,
     total: PropTypes.number,
     version: PropTypes.number,
+    //parent_record: PropTypes.object.isRequired,
 };
 
 Datagrid.defaultProps = {
@@ -283,6 +308,7 @@ Datagrid.defaultProps = {
     hasBulkActions: false,
     ids: [],
     selectedIds: [],
+    //parent_record: {},
     body: <DatagridBody />,
 };
 

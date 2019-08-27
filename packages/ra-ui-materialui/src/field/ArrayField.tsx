@@ -8,11 +8,13 @@ import { FieldProps, InjectedFieldProps, fieldPropTypes } from './types';
 interface State {
     data: object;
     ids: Identifier[];
+    //parent_record: object;
 }
 
 const initialState = {
     data: {},
     ids: [],
+    //parent_record: {},
 };
 
 /**
@@ -109,6 +111,7 @@ export class ArrayField extends Component<
                       return prev;
                   }, {}),
                   ids: list.map(JSON.stringify),
+                  //parent_record: record,
               }
             : initialState;
     }
@@ -124,13 +127,16 @@ export class ArrayField extends Component<
             ...rest
         } = this.props;
         const { ids, data } = this.state;
-
+        console.log(this);
+        // @ts-ignore
         return cloneElement(Children.only(children), {
             ids,
             data,
             isLoading: false,
             basePath,
             currentSort: {},
+            root_record: record,
+            //Record : record,
             ...rest,
         });
     }
