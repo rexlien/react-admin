@@ -182,6 +182,7 @@ export class CoreAdminRouter extends Component<
                 {// Render every resources children outside the React Router Switch
                 // as we need all of them and not just the one rendered
                 Children.map(
+                    // @ts-ignore
                     childrenToRender,
                     (child: React.ReactElement<ResourceProps>) =>
                         cloneElement(child, {
@@ -225,6 +226,7 @@ export class CoreAdminRouter extends Component<
                                     title={title}
                                 >
                                     {Children.map(
+                                        // @ts-ignore
                                         childrenToRender,
                                         (
                                             child: React.ReactElement<
