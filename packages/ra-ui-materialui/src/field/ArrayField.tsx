@@ -127,7 +127,7 @@ export class ArrayField extends Component<
             ...rest
         } = this.props;
         const { ids, data } = this.state;
-        console.log(this);
+        //console.log(this);
         // @ts-ignore
         return cloneElement(Children.only(children), {
             ids,

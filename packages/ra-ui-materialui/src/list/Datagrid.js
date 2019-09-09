@@ -161,7 +161,7 @@ class Datagrid extends Component {
 
         cloned_children = [];
 
-        console.log(this.props);
+        //console.log(this.props);
         /**
          * if loadedOnce is false, the list displays for the first time, and the dataProvider hasn't answered yet
          * if loadedOnce is true, the data for the list has at least been returned once by the dataProvider
@@ -192,7 +192,7 @@ class Datagrid extends Component {
             Children.forEach(children, (child, index) => {
                 cloned_children.push(cloneElement(Children.only(child), {root_record}));
             });
-            console.log(cloned_children);
+            //console.log(cloned_children);
         }
        // console.log(cloned_children);
 
