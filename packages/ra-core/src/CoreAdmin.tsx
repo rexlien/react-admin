@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { createElement, Component, ComponentType, SFC } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
@@ -154,6 +155,7 @@ React-admin requires a valid dataProvider function to work.`);
         );
     }
 
+    // @ts-ignore
     render() {
         const {
             authProvider,
@@ -165,10 +167,12 @@ React-admin requires a valid dataProvider function to work.`);
             locale,
         } = this.props;
 
+        // @ts-ignore
         return this.reduxIsAlreadyInitialized ? (
             this.renderCore()
         ) : (
             <Provider
+
                 store={createAdminStore({
                     authProvider,
                     customReducers,
