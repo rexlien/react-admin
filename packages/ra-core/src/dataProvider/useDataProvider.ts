@@ -117,7 +117,7 @@ import { useState } from 'react';
  * // - FETCH_END
  */
 const useDataProvider = (): DataProviderProxy => {
-    const dispatch = useDispatch() as Dispatch;
+    const dispatch = useDispatch() as Dispatch<any>;
     const dataProvider = useContext(DataProviderContext) || defaultDataProvider;
     const isOptimistic = useSelector(
         (state: ReduxState) => state.admin.ui.optimistic
@@ -519,7 +519,7 @@ interface QueryFunctionParams {
     onSuccess?: (args?: any) => void;
     onFailure?: (error: any) => void;
     dataProvider: DataProvider;
-    dispatch: Dispatch;
+    dispatch: Dispatch<any>;
     logoutIfAccessDenied: (error?: any) => Promise<boolean>;
 }
 

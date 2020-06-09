@@ -1,3 +1,4 @@
+// @ts-ignore
 import * as React from 'react';
 import { FunctionComponent, ComponentType, useContext } from 'react';
 import { Provider, ReactReduxContext } from 'react-redux';
@@ -97,6 +98,7 @@ React-admin uses this history for its own ConnectedRouter.`);
     } else {
         return (
             <Provider
+                // @ts-ignore
                 store={createAdminStore({
                     authProvider: finalAuthProvider,
                     customReducers,

@@ -204,6 +204,7 @@ export const ReferenceFieldView: FC<ReferenceFieldViewProps> = props => {
 
     if (resourceLinkPath) {
         return (
+            // @ts-ignore
             <Link
                 to={resourceLinkPath as string}
                 className={className}

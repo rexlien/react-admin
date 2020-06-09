@@ -25,6 +25,7 @@ export interface LinkProps extends RRLinkProps {
 
 const Link: FC<LinkProps> = props => {
     const {
+        // @ts-ignore
         to,
         children,
         classes: classesOverride,
@@ -45,6 +46,7 @@ const Link: FC<LinkProps> = props => {
 
 Link.propTypes = {
     className: PropTypes.string,
+    // @ts-ignore
     children: PropTypes.node,
     to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
